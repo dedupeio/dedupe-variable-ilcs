@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  test:
+    name: Test against different Python versions
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.7.x, 3.8.x]
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python }}
+        architecture: x64
+    - name: Install packages and run tests
+      run: |
+        pip install --upgrade pip
+        pip install -e .[tests]
+        parserator train training/labeled.xml ilcs_parser
+        pytest
