@@ -3,7 +3,6 @@ import math
 import functools
 
 import ilcs_parser
-import numpy
 from parseratorvariable import ParseratorType, consolidate
 
 CITATION = (
