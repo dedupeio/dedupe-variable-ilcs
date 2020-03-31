@@ -25,6 +25,5 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install -e .[tests]
-        python -c "import ilcs_parser; print(ilcs_parser.__file__)"
-        parserator train training/labeled.xml ilcs_parser
+        pip install -i https://test.pypi.org/simple/ ilcs-parser
         pytest
