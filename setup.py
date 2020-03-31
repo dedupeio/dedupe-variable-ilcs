@@ -15,7 +15,7 @@ setup(
     packages=['dedupe.variables'],
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
-        'ilcs-parser @ https://github.com/datamade/ilcs-parser/archive/jfc/init-parser.zip#egg=ilcs-parser-0.0.0',
+        'ilcs-parser @ https://github.com/datamade/ilcs-parser/archive/master.zip#egg=ilcs-parser-0.0.0',
         'parseratorvariable'
     ],
     extras_require={'tests': ['pytest', 'parserator']},
