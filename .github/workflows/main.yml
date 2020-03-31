@@ -25,5 +25,5 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install -e .[tests]
-        pip install -i https://test.pypi.org/simple/ ilcs-parser
+        pip install -U -i https://test.pypi.org/simple/ ilcs-parser
         pytest
