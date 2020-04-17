@@ -24,7 +24,6 @@ class ILCSType(ParseratorType):
         self.components = (('Citation', self.compareFields, CITATION),)
         block_parts = ('Citation',)
         super().__init__(definition, ilcs_parser.tag, block_parts)
-'''
         # Add exact match to the distance vector
         self.expanded_size += 1
 
@@ -35,4 +34,3 @@ class ILCSType(ParseratorType):
         fields = super().fields(field)
         fields += [('exact match', 'Exact')]
         return fields
-'''
