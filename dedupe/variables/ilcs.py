@@ -2,6 +2,7 @@ import string
 import math
 import functools
 
+import numpy
 import ilcs_parser
 from parseratorvariable import ParseratorType, consolidate
 
@@ -34,3 +35,20 @@ class ILCSType(ParseratorType):
         fields = super().fields(field)
         fields += [('exact match', 'Exact')]
         return fields
+
+    def comparator(self, field_1, field_2):
+        """
+        Override the parent method to append an exact match field.
+        """
+        # Temporarily subtract the exact match indicator from expanded_size,
+        # since the parent method assumes that the last element of the distance
+        # vector is the full-string comparison.
+        self.expanded_size -= 1
+        distances = super().comparator(field_1, field_2)
+        self.expanded_size += 1
+
+        # Set the exact match indicator variable.
+        exact_match = 1 if field_1 == field_2 else 0
+        distances = numpy.append(distances, exact_match)
+
+        return distances
