@@ -45,16 +45,16 @@ class ILCSType(ParseratorType):
 
         # Set the attempted match indicator variable
         try:
-            parsed_variable_1, variable_type_1 = self.tagger(field_1)
-            parsed_variable_2, variable_type_2 = self.tagger(field_2)
+            parsed_variable_1 = self.tagger(field_1)
+            parsed_variable_2 = self.tagger(field_2)
         except TypeError:
             attempted = 0
         else:
+            variable_type_1, variable_type_2 = parsed_variable_1[1], parsed_variable_2[1]
             if 'Ambiguous' in (variable_type_1, variable_type_2):
                 attempted = 0
             else:
-                attempted = int(is_attempted(parsed_variable_1) == is_attempted(parsed_variable_2))
-
+                attempted = int(parsed_variable_1.is_attempted == parsed_variable_2.is_attempted)
         distances = numpy.append(distances, attempted)
 
         # Set the exact match indicator variable
@@ -62,14 +62,3 @@ class ILCSType(ParseratorType):
         distances = numpy.append(distances, exact_match)
 
         return distances
-
-
-def is_attempted(parsed_tokens):
-    """
-    Given a dict of parsed Citation tokens, determine whether the string
-    represented an attempted charge or not.
-    """
-    for token_type in parsed_tokens.keys():
-        if token_type.startswith('Attempted'):
-            return True
-    return False
