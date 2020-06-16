@@ -7,15 +7,24 @@ except ImportError:
         "for installing setuptools"
     )
 
+
+def readme():
+    with open('README.md') as f:
+        return f.read()
+
+
 setup(
     version='0.0.0',
+    author='DataMade',
     url='https://github.com/dedupeio/dedupe-variable-ilcs',
     description='Dedupe variable for Illinois Compiled Statute (ILCS) codes',
+    long_description=readme(),
+    long_description_content_type='text/markdown',
     name='dedupe-variable-ilcs',
     packages=['dedupe.variables'],
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
-        'ilcs-parser @ https://github.com/datamade/ilcs-parser/archive/master.zip#egg=ilcs-parser-0.0.0',
+        'ilcs-parser',
         'parseratorvariable'
     ],
     extras_require={'tests': ['pytest', 'parserator']},
