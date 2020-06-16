@@ -45,7 +45,7 @@ def test_mismatched_elements(ilcs):
 
 def test_attempted_match(ilcs):
     numpy.testing.assert_almost_equal(
-        ilcs.comparator('125 5/21-a (att)', '720-5/8-4 125 6/21'),
+        ilcs.comparator('725 5/21-a (att)', '720-5/8-4 725 6/21'),
         numpy.array([
             1, 0, 1,
             ilcs.compareString('125', '125'),
