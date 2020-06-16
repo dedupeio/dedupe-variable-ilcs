@@ -14,7 +14,7 @@ def readme():
 
 
 setup(
-    version='0.0.0',
+    version='0.1.0',
     author='DataMade',
     url='https://github.com/dedupeio/dedupe-variable-ilcs',
     description='Dedupe variable for Illinois Compiled Statute (ILCS) codes',
